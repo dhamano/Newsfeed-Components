@@ -123,9 +123,6 @@
   box-shadow: none;
   overflow: hidden;
 }
-.article-open {
-  height: 400px;
-}
 html,
 body {
   margin: 0;

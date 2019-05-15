@@ -14,20 +14,23 @@ class GenerateArticle {
     const closerEl = document.createElement('i');
     const h2El = document.createElement('h2');
     const pDate = document.createElement('p');
+    const divArticleEl = document.createElement('div');
     const pEl = document.createElement('p');
     const spanEl = document.createElement('span');
     containerEl.classList.add('article');
     closerEl.classList.add('fas', 'fa-times', 'remove');
     pDate.classList.add('date');
+    divArticleEl.classList.add('article-content');
     spanEl.classList.add('expandButton');
     h2El.textContent = this.title;
     pDate.textContent = this.date;
     pEl.textContent = this.content;
     document.querySelector('.articles').appendChild(containerEl);
-    containerEl.appendChild(h2El);
     containerEl.appendChild(closerEl);
+    containerEl.appendChild(h2El);
     containerEl.appendChild(pDate);
-    containerEl.appendChild(pEl);
+    containerEl.appendChild(divArticleEl);
+    divArticleEl.appendChild(pEl);
     containerEl.appendChild(spanEl);
     document.querySelector('.articles').prepend(containerEl);
   }
@@ -59,8 +62,12 @@ class Article {
     this.domElement.classList.toggle('article-open');
     if(this.domElement.classList.contains('article-open')) {
       this.expandButton.textContent = 'Click to Close';
+      let containerHeight = this.domElement.offsetHeight;
+      let articleHeight = this.domElement.querySelector('.article-content').offsetHeight + containerHeight;
+      this.domElement.style.cssText = 'height: '+articleHeight+'px';
     } else {
-      this.expandButton.textContent = 'Click to Open';
+      this.expandButton.textContent = 'Click to Expand';
+      this.domElement.style.cssText = 'height: 50px';
     }
   }
 
