@@ -60,6 +60,7 @@ class GenerateArticle {
   
   addArticle() {
     console.log('new article');
+    // Create Elements
     const containerEl = document.createElement('div');
     const closerEl = document.createElement('i');
     const h2El = document.createElement('h2');
@@ -67,14 +68,20 @@ class GenerateArticle {
     const divArticleEl = document.createElement('div');
     const pEl = document.createElement('p');
     const spanEl = document.createElement('span');
+
+    // Add Relevant Classes
     containerEl.classList.add('article');
     closerEl.classList.add('fas', 'fa-times', 'remove');
     pDate.classList.add('date');
     divArticleEl.classList.add('article-content');
     spanEl.classList.add('expandButton');
+
+    // Add Content
     h2El.textContent = this.title;
     pDate.textContent = this.date;
     pEl.textContent = this.content;
+
+    // Add to website
     document.querySelector('.articles').appendChild(containerEl);
     containerEl.appendChild(closerEl);
     containerEl.appendChild(h2El);
@@ -83,6 +90,8 @@ class GenerateArticle {
     divArticleEl.appendChild(pEl);
     containerEl.appendChild(spanEl);
     document.querySelector('.articles').prepend(containerEl);
+
+    // Make It An Article Object
     const articleInstance = new Article(containerEl);
   }
 }
